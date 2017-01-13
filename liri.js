@@ -1,6 +1,15 @@
 // ====================================================================================
-// 1. Make a javascript file that will display my latest tweets
+// 1. Argument Definition: argv[2] to call the js file; argv[3] to take the command line
 //=====================================================================================
+
+var nodeJsFile = process.argv[2];
+
+var thingsToAskFor = process.argv[3];
+
+// ===================================================================================
+// 2. Use switch statements to alternate between four cases [(a) Getting tweets from my twitter]
+// (b) Getting songs from spotify (c) Getting movies from OMDB and (d) Reading and displaying texts from a .txt file]
+
 //a. Include the twitter NPM package (Remember to run "npm install twitter"!)
 var Twit = require('twit');
 
