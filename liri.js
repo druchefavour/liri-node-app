@@ -4,11 +4,38 @@
 
 var nodeJsFile = process.argv[2];
 
-var thingsToAskFor = process.argv[3];
+var itemToAskFor = process.argv[3];
+
+//====================================================================================
+// 2. Write the code you need to grab the data from keys.js. Then store the keys in a variable
 
 // ===================================================================================
-// 2. Use switch statements to alternate between four cases [(a) Getting tweets from my twitter]
+// 3. Use switch statements to alternate between four cases [(a) Getting tweets from my twitter]
 // (b) Getting songs from spotify (c) Getting movies from OMDB and (d) Reading and displaying texts from a .txt file]
+
+//----Declare and store a request variable------------- 
+var request = require (request);
+//----Declare and store a file system variable----------- 
+var fs = require(fs); 
+
+//-----Write code for the switch statement -----
+switch(nodeJsFile){
+  case 'my_tweets':
+  my_tweets();
+  break;
+
+  case 'spotify_this_song':
+  spotify_this_song(itemToAskFor);
+  break;
+
+  case 'movie_this'
+  movie_this(itemToAskFor);
+  break;
+
+  case 'do_what_it_says'
+  do_what_it_says();
+  break;
+}
 
 //a. Include the twitter NPM package (Remember to run "npm install twitter"!)
 var Twit = require('twit');
