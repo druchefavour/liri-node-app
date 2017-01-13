@@ -7,10 +7,29 @@ var nodeJsFile = process.argv[2];
 var itemToAskFor = process.argv[3];
 
 //====================================================================================
-// 2. Write the code you need to grab the data from keys.js. Then store the keys in a variable
+// 2. Importing from twitter
+// Write the code to grab the data from keys.js and store the keys in a variable
+
+// ------- Declare and store variable to require from twitter -----
+var Twit = require('twit');
+// -------import keys from keys.ja -------------------------------
+var keys = require('./keys');
+
+// --------check whether keys have been imported properly
+console.log(keys);
+
+//====================================================================================
+// 3. Declare and store twitter grab variable
+// ------ Create a user constructor -------------------
+var twitter = new Twit(keys);
+// ------- Create the twitter search parameters object and declare it as a variable
+var params = {
+  screen_name : 'moven_tech',
+  count : 20
+}
 
 // ===================================================================================
-// 3. Use switch statements to alternate between four cases [(a) Getting tweets from my twitter]
+// 4. Use switch statements to alternate between four cases [(a) Getting tweets from my twitter]
 // (b) Getting songs from spotify (c) Getting movies from OMDB and (d) Reading and displaying texts from a .txt file]
 
 //----Declare and store a request variable------------- 
@@ -37,31 +56,7 @@ switch(nodeJsFile){
   break;
 }
 
-//a. Include the twitter NPM package (Remember to run "npm install twitter"!)
-var Twit = require('twit');
 
-//b. Take in the command line arguments
-var my_tweets = process.argv[3];
-
-// c. Grab data from keys.js. 
-// Then store the keys in a variable
-// ================================================================ 
-// Using the require keyword lets us access all of the exports
-// in our keys.js file
-
-var keys = require('./keys');
-
-// This will print everything in exports.
-
-console.log(keys);
-
-var twitter = new Twit(keys);
-
-var params = {
-	q: 'I',
-	count: 20,
-	screen_name: 'moven_tech'
-}
 
 twitter.get('search/tweets', params, gotTweet);
 function gotTweet(err, data, response) {
