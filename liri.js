@@ -21,7 +21,7 @@ console.log(keys);
 //====================================================================================
 // 3. Declare and store twitter grab variable
 // ------ Create a user constructor -------------------
-var twitter = new Twit(keys);
+var twitterClient = new Twit(keys);
 // ------- Create the twitter search parameters object and declare it as a variable
 var params = {
   screen_name : 'moven_tech',
@@ -56,18 +56,43 @@ switch(nodeJsFile){
   break;
 }
 
+// =====================================================================
+// 5. CREATE FUNCTIONS THAT WILL BE CALLED BY THE SWITCH STATEMENTS ABOVE
 
-
-twitter.get('search/tweets', params, gotTweet);
-function gotTweet(err, data, response) {
-	var tweets = data.statuses;
-	for (var i = 0; i < tweets.length; i++) {
-			console.log(JSON.stringify(tweets[i].text));
-			console.log(JSON.stringify(tweets[i].created_at));
-	}
-}
+  // A. Create my_tweets function
+  function my_tweets() {
+      twitterClient.get('statuses/user_timeline', params, gotTweet);
+      function gotTweet(err, data, response) {
+        //--- BONUS ---Write if statement to log data to bash ----- and create log.txt file
+        if (!error && response.statusCode == 200){
+           fs.appendFile('terminal.log', ('=============== LOG ENTRY BEGIN ===============\r\n' 
+            + Date() + '\r\n \r\nTERMINAL COMMANDS:\r\n$: ' + process.argv + '\r\n \r\nDATA OUTPUT:\r\n'), 
+           function(err){
+            if (err) throw err;
+          });
+           //Print last 20 tweets
+           console.log(' ');
+           console.log('====Last 20 Tweets:')
+           for (j = 0; j < data.length; j++) {
+            var digits = j + 1;
+                console.log(' ');
+                console.log([j + 1] + '. ' + data[j].text);
+                console.log('Created on: ' + data[j].created_at);
+                console.log(' ');
+                fs.appendFile('terminal.log', (digits + '. Tweet: ' + data[j].text + '\r\nCreated at: ' 
+                  + data[j].created_at + ' \r\n'), function(err) {
+                    if (err) throw err;
+                  });
+           }
+           fs.appendFile('terminal.log', ('=============== LOG ENTRY END ===============\r\n \r\n'), function(err){
+            if (err) throw err;
+          });
+      }
+    }
+    //-----End my_tweets function ------------------  
 
 // ==========================================================
+
 //2. Make a Javascript file to Spotify songs
 // ===========================================================
 
