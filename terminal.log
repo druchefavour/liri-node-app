@@ -32,3 +32,29 @@ Created at: Thu Jan 12 21:36:19 +0000 2017
 Created at: Thu Jan 12 21:35:52 +0000 2017 
 =============== LOG ENTRY END ===============
  
+=============== LOG ENTRY BEGIN ===============
+Fri Jan 13 2017 21:02:30 GMT-0600 (Central Standard Time)
+ 
+TERMINAL COMMANDS:
+$: C:\Program Files\nodejs\node.exe,C:\Users\OWNER\Google Drive\Bootcamp\Workspace\Homework_8\liri-node-app\liri.js,do_what_it_says
+ 
+DATA OUTPUT:
+Artist: Backstreet Boys
+Song: I Want It That Way
+Preview Link of the Song: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=null
+Album: The Hits--Chapter One
+=============== LOG ENTRY END ===============
+ 
+=============== LOG ENTRY BEGIN ===============
+Fri Jan 13 2017 21:08:58 GMT-0600 (Central Standard Time)
+ 
+TERMINAL COMMANDS:
+$: C:\Program Files\nodejs\node.exe,C:\Users\OWNER\Google Drive\Bootcamp\Workspace\Homework_8\liri-node-app\liri.js,do_what_it_says
+ 
+DATA OUTPUT:
+Artist: Backstreet Boys
+Song: I Want It That Way
+Preview Link of the Song: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=null
+Album: The Hits--Chapter One
+=============== LOG ENTRY END ===============
+ 

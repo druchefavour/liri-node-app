@@ -1,0 +1,16 @@
+=============== LOG ENTRY BEGIN ===============
+Fri Jan 13 2017 21:07:47 GMT-0600 (Central Standard Time)
+ 
+TERMINAL COMMANDS: C:\Program Files\nodejs\node.exe,C:\Users\OWNER\Google Drive\Bootcamp\Workspace\Homework_8\liri-node-app\liri.js,do_what_it_says
+DATA OUTPUT:
+Title: The StarWars Adventures
+Year: 2016
+IMDb Rating: N/A
+Country: UK
+Language: English
+Plot: After splitting the Battalion into four companies, Thunder Company, under the command of Captain Mandeville,was sent to investigate Decks 300 to 600. To achieve this in the quickest ...
+Actors: Ron Arthurs, Johnathan Beetles, Jake Gosden, Matt Jackson
+Rotten Tomatoes Rating: N/A
+Rotten Tomatoes URL: N/A
+ =============== LOG ENTRY END ===============
+ 

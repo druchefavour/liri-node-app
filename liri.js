@@ -16,7 +16,7 @@ var Twit = require('twit');
 var keys = require('./keys');
 
 // --------check whether keys have been imported properly
-console.log(keys);
+// console.log(keys);
 
 //====================================================================================
 // 3. Declare and store twitter grab variable
@@ -156,7 +156,7 @@ switch(nodeJsFile){
         console.log(error);
       } else {
         var dataArr = data.split(',');
-        if (dataArr[0] === 'spotify') {
+        if (dataArr[0] === 'spotify_this_song') {
           spotify_this_song(dataArr[1]);
         }
         if (dataArr[0] === 'movie_this') {
