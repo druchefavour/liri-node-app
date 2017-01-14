@@ -47,11 +47,11 @@ switch(nodeJsFile){
   spotify_this_song(itemToAskFor);
   break;
 
-  case 'movie_this'
+  case 'movie_this':
   movie_this(itemToAskFor);
   break;
 
-  case 'do_what_it_says'
+  case 'do_what_it_says':
   do_what_it_says();
   break;
 }
@@ -91,74 +91,71 @@ switch(nodeJsFile){
     }
     //-----End my_tweets function ------------------  
 
-// ==========================================================
-
-//2. Make a Javascript file to Spotify songs
-// ===========================================================
-
-// a.   install spotify with npm: npm install spotify
-
-// b. 	require spotify
-var request = require('request');
-
-var songName = 'My love';
-
-var queryUrl = 'https://api.spotify.com/v1/search?q=' + songName + '&type=track'
-
-// This line is just to help us debug against the actual URL.
-console.log(queryUrl);
-
-// Then run a request to the OMDB API with the movie specified
-request(queryUrl, function(error, response, body) {
-
-  // If the request is successful (i.e. if the response status code is 200)
-  if (!error && response.statusCode === 200) {
-
-    // Parse the body of the site and recover just the imdbRating
-    // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
-    console.log("The song's release year is: " + JSON.parse(body).Year);
+// =============================================================
+  // B. Create spotify_this_song function
+  // ===========================================================
+  function spotify_this_song(itemToAskFor) {
+    if(itemToAskFor == null){
+      itemToAskFor = 'The Sign'
+    }
+    request('https://api.spotify.com/v1/search?q=' + itemToAskFor + '&type=track', function(error, response, body){
+       if (!error && response.statusCode == 200){
+        jsonBody = JSON.parse(body);
+        console.log(' ');
+        console.log('Artist: ' + jsonBody.tracks.items[0].artists[0].name);
+        console.log('Song : ' + jsonBody.tracks.items[0].name);
+        console.log('Preview Link of the Song: ' + jsonBody.tracks.items[0].preview_url);
+        console.log('Album: ' + jsonBody.tracks.items[0].album.name);
+        console.log(' ');
+        fs.appendFile('terminal.log', ('=============== LOG ENTRY BEGIN ===============\r\n' 
+          + Date() +'\r\n \r\nTERMINAL COMMANDS:\r\n$: ' + process.argv + '\r\n \r\nDATA OUTPUT:\r\n' 
+          + 'Artist: ' + jsonBody.tracks.items[0].artists[0].name + '\r\nSong: ' + jsonBody.tracks.items[0].name + 
+          '\r\nPreview Link of the Song: ' + jsonBody.tracks.items[0].preview_url + 
+          '\r\nAlbum: ' + jsonBody.tracks.items[0].album.name + 
+          '\r\n=============== LOG ENTRY END ===============\r\n \r\n'), function(err){
+          if (err) throw err;
+        });
+       }
+    });
   }
-});
-  // ...
+  // end spotify_this_song function
 
-  // Then log the Release Year for the movie
-  // ...
-
-  // Include the request npm package (Don't forget to run "npm install request" in this folder first!)
-// ...
-
-
-// Grab or assemble the movie name and store it in a variable called "movieName"
-var movieName = "";
-// ...
-
-
-// Then run a request to the OMDB API with the movie specified
-var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&r=json";
-
-
-// This line is just to help us debug against the actual URL.
-console.log(queryUrl);
-
-
-// Then create a request to the queryUrl
-var request = require("request");
-// ...
-// Then run a request to the OMDB API with the movie specified
-request("http://www.omdbapi.com/?t=star+wars&y=&plot=short&r=json", function(error, response, body) {
-
-  // If the request is successful (i.e. if the response status code is 200)
-  if (!error && response.statusCode === 200) {
-
-    // Parse the body of the site and recover just the imdbRating
-    // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
-    console.log("The movie's release year is: " + JSON.parse(body).Year);
+// ==================================================================
+  // ---------- C. Create movie_this function ------------
+  // ================================================================
+  function movie_this(itemToAskFor) {
+    if (itemToAskFor == null) {
+      itemToAskFor == 'Mr. Nobody';
+    }
+    request('http://www.omdbapi.com/?t=' + itemToAskFor + '&tomatoes=true&r=json', function(error, response, body){
+      if (!error && response.statusCode == 200) {
+        jsonBody = JSON.parse(body);
+        console.log(' ');
+        console.log('Title: ' + jsonBody.Title);
+        console.log('Year: ' + jsonBody.Year);
+        console.log('IMDb Rating: ' + jsonBody.imdbRating);
+        console.log('Country: ' + jsonBody.Country);
+        console.log('Language: ' + jsonBody.Language);
+        console.log('Plot: ' + jsonBody.Plot);
+        console.log('Actors: ' + jsonBody.Actors);
+        console.log('Rotten Tomatoes Rating: ' + jsonBody.tomatoRating);
+        console.log('Rotten Tomatoes URL: ' + jsonBody.tomatoURL);
+        console.log(' ');
+        fs.appendFile('log.txt', ('=============== LOG ENTRY BEGIN ===============\r\n' + Date() 
+          + '\r\n \r\nTERMINAL COMMANDS: ' + process.argv + '\r\nDATA OUTPUT:\r\n' 
+          + 'Title: ' + jsonBody.Title + '\r\nYear: ' + jsonBody.Year + '\r\nIMDb Rating: ' + 
+          jsonBody.imdbRating + '\r\nCountry: ' + jsonBody.Country + '\r\nLanguage: ' + 
+          jsonBody.Language + '\r\nPlot: ' + jsonBody.Plot + '\r\nActors: ' + jsonBody.Actors + 
+          '\r\nRotten Tomatoes Rating: ' + jsonBody.tomatoRating + '\r\nRotten Tomatoes URL: ' + 
+          jsonBody.tomatoURL + '\r\n =============== LOG ENTRY END ===============\r\n \r\n'), function(err) {
+          if (err) throw err;
+        });
+      }
+    });
   }
-});
-  // ...
+  // end movie_this function
 
-  // Then log the Release Year for the movie
-  // ...
+
 
 
 
