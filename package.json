@@ -1,0 +1,28 @@
+{
+  "name": "liri-node-app",
+  "version": "0.1.0",
+  "description": "language_recognition",
+  "main": "liri.js",
+  "dependencies": {
+    "node-twitter-api": "^1.8.0",
+    "request": "^2.79.0",
+    "spotify": "^0.3.0",
+    "twit": "^2.2.5",
+    "twitter": "^1.7.0",
+    "twitter-oauth": "^0.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/druchefavour/liri-node-app.git"
+  },
+  "author": "Angus Ogubuike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/druchefavour/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/druchefavour/liri-node-app#readme"
+}
