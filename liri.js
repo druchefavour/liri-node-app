@@ -155,29 +155,23 @@ switch(nodeJsFile){
   }
   // end movie_this function
 
-
-
-
-
-// ============================================
-//4: Create `node liri.js do-what-it-says 
-// =============================================
-// Includes the FS package for reading and writing packages
-var fs = require("fs");
-
-// Running the readFile module that's inside of fs.
-// Stores the read information into the variable "data"
-
-fs.readFile("random.txt", "utf8", function(err, data) {
-
-// Break the string down by comma separation and store the contents into the output array.
-var output = data.split(",");
-
-var do_what_it_says = process.argv[3];
-// Loop Through the newly created output array
-for (var i = 0; i < output.length; i++) {
-	// Print each element (item) of the array/
-	console.log(output[i]);
-}
-
-});
+  // ==================================================================================
+  // -----------------D. Create random function ---------------------------------------
+  // ================================================================================== 
+  function do_what_it_says() {
+    fs.readFile('random.txt', 'utf8', function(error, data) {
+      if (error) {
+        console.log(error);
+      } else {
+        var dataArr = data.split(',');
+        if (dataArr[0] === 'spotify') {
+          spotify_this_song(dataArr[1]);
+        }
+        if (dataArr[0] === 'movie_this') {
+          movie_this(dataArr[1]);
+        }
+      }
+    });
+  }
+  
+// ----- End of do_what_it_says function -----
