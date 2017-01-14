@@ -33,9 +33,9 @@ var params = {
 // (b) Getting songs from spotify (c) Getting movies from OMDB and (d) Reading and displaying texts from a .txt file]
 
 //----Declare and store a request variable------------- 
-var request = require (request);
+var request = require ('request');
 //----Declare and store a file system variable----------- 
-var fs = require(fs); 
+var fs = require('fs'); 
 
 //-----Write code for the switch statement -----
 switch(nodeJsFile){
@@ -61,33 +61,30 @@ switch(nodeJsFile){
 
   // A. Create my_tweets function
   function my_tweets() {
-      twitterClient.get('statuses/user_timeline', params, gotTweet);
-      function gotTweet(err, data, response) {
+      twitterClient.get('statuses/user_timeline', params, function gotTweet(error, data, response) {
         //--- BONUS ---Write if statement to log data to bash ----- and create log.txt file
         if (!error && response.statusCode == 200){
-           fs.appendFile('terminal.log', ('=============== LOG ENTRY BEGIN ===============\r\n' 
-            + Date() + '\r\n \r\nTERMINAL COMMANDS:\r\n$: ' + process.argv + '\r\n \r\nDATA OUTPUT:\r\n'), 
-           function(err){
+           fs.appendFile('terminal.log', ('=============== LOG ENTRY BEGIN ===============\r\n' + Date() + '\r\n \r\nTERMINAL COMMANDS:\r\n$: ' + process.argv + '\r\n \r\nDATA OUTPUT:\r\n'), function(err){
             if (err) throw err;
           });
            //Print last 20 tweets
            console.log(' ');
-           console.log('====Last 20 Tweets:')
+           console.log('====Last 20 Tweets:');
            for (j = 0; j < data.length; j++) {
             var digits = j + 1;
                 console.log(' ');
                 console.log([j + 1] + '. ' + data[j].text);
                 console.log('Created on: ' + data[j].created_at);
                 console.log(' ');
-                fs.appendFile('terminal.log', (digits + '. Tweet: ' + data[j].text + '\r\nCreated at: ' 
-                  + data[j].created_at + ' \r\n'), function(err) {
-                    if (err) throw err;
+                fs.appendFile('terminal.log', (digits + '. Tweet: ' + data[j].text + '\r\nCreated at: ' + data[j].created_at + ' \r\n'), function(err) {
+                  if (err) throw err;
                   });
            }
            fs.appendFile('terminal.log', ('=============== LOG ENTRY END ===============\r\n \r\n'), function(err){
             if (err) throw err;
           });
-      }
+         }
+       });
     }
     //-----End my_tweets function ------------------  
 
@@ -141,13 +138,8 @@ switch(nodeJsFile){
         console.log('Rotten Tomatoes Rating: ' + jsonBody.tomatoRating);
         console.log('Rotten Tomatoes URL: ' + jsonBody.tomatoURL);
         console.log(' ');
-        fs.appendFile('log.txt', ('=============== LOG ENTRY BEGIN ===============\r\n' + Date() 
-          + '\r\n \r\nTERMINAL COMMANDS: ' + process.argv + '\r\nDATA OUTPUT:\r\n' 
-          + 'Title: ' + jsonBody.Title + '\r\nYear: ' + jsonBody.Year + '\r\nIMDb Rating: ' + 
-          jsonBody.imdbRating + '\r\nCountry: ' + jsonBody.Country + '\r\nLanguage: ' + 
-          jsonBody.Language + '\r\nPlot: ' + jsonBody.Plot + '\r\nActors: ' + jsonBody.Actors + 
-          '\r\nRotten Tomatoes Rating: ' + jsonBody.tomatoRating + '\r\nRotten Tomatoes URL: ' + 
-          jsonBody.tomatoURL + '\r\n =============== LOG ENTRY END ===============\r\n \r\n'), function(err) {
+        fs.appendFile('log.txt', ('=============== LOG ENTRY BEGIN ===============\r\n' + Date() + '\r\n \r\nTERMINAL COMMANDS: ' + process.argv + '\r\nDATA OUTPUT:\r\n' + 'Title: ' + jsonBody.Title + '\r\nYear: ' + jsonBody.Year + '\r\nIMDb Rating: ' + jsonBody.imdbRating + '\r\nCountry: ' + jsonBody.Country + '\r\nLanguage: ' + 
+          jsonBody.Language + '\r\nPlot: ' + jsonBody.Plot + '\r\nActors: ' + jsonBody.Actors + '\r\nRotten Tomatoes Rating: ' + jsonBody.tomatoRating + '\r\nRotten Tomatoes URL: ' + jsonBody.tomatoURL + '\r\n =============== LOG ENTRY END ===============\r\n \r\n'), function(err) { 
           if (err) throw err;
         });
       }
@@ -173,5 +165,4 @@ switch(nodeJsFile){
       }
     });
   }
-  
 // ----- End of do_what_it_says function -----
