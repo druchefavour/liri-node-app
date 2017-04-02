@@ -44,7 +44,25 @@ For this project, LIRI displays my latest tweets. To retrieve the data that will
     * Don't fill out the Callback URL input. Then submit the form.
 
   * On the next screen, click the Keys and Access Tokens tab to get the consumer key and secret.
-   * Copy and paste them where the <input here> tags are inside your ```keys.js``` file.
+    * Copy and paste them where the <input here> tags are inside your ```keys.js``` file.
   * At the bottom of the page, click the Create my access token button to get the access token key and secret.
-    * Copy the access token key and secret displayed at the bottom of the next screen. Paste them where the <input here> tags are inside the keys.js file.
-  
+    * Copy the access token key and secret displayed at the bottom of the next screen. Paste them where the <input here> tags are inside the ```keys.js``` file.
+ 
+ ## Creating Texts
+ * Make a file called random.txt.
+
+ * Inside of random.txt put the following in with no extra characters or white space:
+   * spotify-this-song,"I Want it That Way"
+
+## Javascript
+ * Make a JavaScript file named ```liri.js```.
+
+ * At the top of the ```liri.js``` file, write the code you need to grab the data from ```keys.js```. Then store the keys in a variable.
+
+ Make it so ```liri.js``` can take in one of the following commands:
+   * my-tweets
+   * spotify-this-song
+   * movie-this
+   * do-what-it-says
+
+
