@@ -20,15 +20,14 @@ For this project, LIRI displays my latest tweets. To retrieve the data that will
 
 * Make a JavaScript file named ```keys.js```. 
   
-  ```keys.js``` contains text like:```
+  ```keys.js``` contains text like:
   ```console.log('this is loaded');```
   ```exports.twitterKeys = {```
   ```consumer_key: '<input here>',```
   ```consumer_secret: '<input here>',```
   ```access_token_key: '<input here>',```
   ```access_token_secret: '<input here>',```
-```}
-
+}```
 
 * Add ```keys.js```to the .gitignore.
 
