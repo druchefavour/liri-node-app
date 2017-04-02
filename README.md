@@ -92,3 +92,14 @@ For this project, LIRI displays my latest tweets. To retrieve the data that will
   * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 * node liri.js do-what-it-says
 
+## fs Node Package
+* Using the fs Node package, LIRI will take the text inside of ```random.txt``` and then use it to call one of LIRI's commands.
+* It also runs spotify-this-song for "I Want it That Way," as follows the text in ```random.txt```.
+
+* In addition to logging the data to the terminal/bash window, output the data to a .txt file called ```log.txt```.
+
+* Each command I run is appended to the log.txt file. The file is not overwritten each time I run a command.
+
+
+
+
